@@ -13,6 +13,7 @@ const Chat = ({socket}) => {
     const [smileyClicked,setSmileyClicked] = useState(false);
     const [messageText, setMessageText] = useState("");
     const [displayMessages,setDisplayMessages] = useState([]);
+    const [openChatSettings, setOpenChatSettings] = useState(false);
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
@@ -201,9 +202,17 @@ const Chat = ({socket}) => {
                     <div className="connection-right">
                         {/* <i class="fas fa-search"></i> */}
                         <i class="fas fa-paperclip"></i>
-                        <i class="fas fa-ellipsis-v" onClick={handleChatSettings}></i>
+                        <i class="fas fa-ellipsis-v" onClick={() => {setOpenChatSettings(!openChatSettings)}}></i>
                     </div>
-                    <div className="chatSetting"></div>
+                    {/* <div className="chatSetting"></div> */}
+                    {openChatSettings?
+                    <div className="chatDropDown">
+                        <ul>
+                            <li className="menu-item">Clear Messages</li>
+                            <li className="menu-item">Delete Chat</li>
+                        </ul>
+                    </div>
+                    :null}
                 </div>
 
                 <div className="Message-body">

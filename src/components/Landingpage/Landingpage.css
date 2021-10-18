@@ -1,9 +1,11 @@
 .loading{
-    position: fixed;
-    display: flex;
+     position: relative; 
+     display: flex; 
 }
 .square{
-    position: relative;
+    position: absolute;
+    top: 30%;
+    left: 25%;
     width: 10rem;
     height: 10rem;
     animation: rotate 4s linear infinite;
@@ -104,20 +106,27 @@ animation-delay: 1.5s;
 }
 
 .para{
+    position: absolute;
     letter-spacing: 1mm;
+    top: 60%;
+    left: 25%;
+    
 }
 .para p
 {
+    position: absolute;
     font-size: xx-large;
     font-weight: 700;
     margin-bottom: 0%;
+    
 }
 
 
 .buttons{
+    position: absolute;
     text-decoration: none;
     color: black;
-    /* margin-top: 2rem; */
+    margin-top: 2rem;
     margin-right: 1rem;
     padding: 1rem;
     font-size: 1.5rem;
@@ -130,6 +139,9 @@ animation-delay: 1.5s;
     border-radius: 1rem;
     opacity: 0.7;
     cursor: pointer;
+    top: 90%;
+    right: 11.5%;
+    
 }
 
 .buttons button:hover{
@@ -137,4 +149,12 @@ animation-delay: 1.5s;
     to right bottom ,
     rgba(255,255,255,1),
     rgba(255,255,255,0.8));
+}
+
+.accessSnake{
+    position: absolute;
+    font-size: 1 rem;
+    font-weight: bold;
+    bottom: 45%;
+    left: 70%;
 }

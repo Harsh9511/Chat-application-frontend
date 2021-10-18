@@ -11,8 +11,17 @@ input{
     text-align: center;
 }
 
+.credentialsWarning1, .credentialsWarning2{
+    font-weight: bold;
+    /* color: red; */
+}
+
 .signinbutton{
+    position: relative;
     margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    left: 28%;
     margin-right: 1rem;
     padding: 1rem;
     font-size: 1.5rem;

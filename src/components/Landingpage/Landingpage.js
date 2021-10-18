@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './Landingpage.css';
 import {Link} from 'react-router-dom';
+import Signin from '../Signin/signin';
 
 class Landingpage extends Component{
 
@@ -26,12 +27,18 @@ class Landingpage extends Component{
         <br></br>
         <br></br>
         <div className="para">
-            <p>Snake Bite</p>
+            <p>SNAKEBITE</p>
         </div>
         <br></br>
         <br></br>
-        <Link className="buttons" to={'/signin'}>Signin</Link>
-        <Link className="buttons" to={'/signup'}>Signup</Link>
+        {/* <Link className="buttons" to={'/signin'}>LOG IN</Link>
+        <Link className="buttons" to={'/signup'}>REGISTER</Link> */}
+        <br></br>
+        <div className="accessSnake"><Signin></Signin>
+        <p className="para2">New user? Register now for free!<br></br>
+        <Link className="buttons" to={'/signup'}>REGISTER</Link>
+        </p>
+        </div>
         <div>
         </div>
       </div>

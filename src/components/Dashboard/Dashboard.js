@@ -10,6 +10,7 @@ const Dashboard = ({socket}) =>{
     const [globalState, setGlobalState] = useContext(Context);
     const [SearchedContacts,setSearchedContacts]= useState([]);
     const [savedContacts,setSavedContacts]=useState();
+    const [openDashboardSettings, setOpenDashboardSettings] = useState(false);
 
     useEffect(() => {
         setSavedContacts(globalState.user.rooms.map((val,key)=>{
@@ -121,8 +122,17 @@ const Dashboard = ({socket}) =>{
             <div className="user">
                 <Avatar />
                 <h3>{globalState.user.name}</h3>
-                <i className="fas fa-ellipsis-v"></i>
+                <i className="fas fa-ellipsis-v" onClick={() => {setOpenDashboardSettings(!openDashboardSettings)}}></i>
             </div>
+            {openDashboardSettings?
+            <div className="dashboardDropDown">
+                <ul>
+                    <li className="menu-item">Create new SnakePit</li>
+                    <li className="menu-item">Settings</li>
+                    <li className="menu-item" onClick={() => {'http://localhost:3000/signin'}}>Log out</li>
+                </ul>
+            </div>
+            :null}
             <div className="search-bar">
                 <div className="search-bar-container">
                     <i className="fas fa-search"></i>

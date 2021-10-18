@@ -18,13 +18,13 @@ const Signin = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // console.log(username,password);
-        let err = "";
+        // console.log(username,password)
+            let err = "";
         if(!username){
-                err = <strong>Please provide the user name.</strong>;
+                err = <strong>Username is required!!!</strong>;
         }   
         else if(!password){
-                err = <strong>Please provide the password.</strong>;
+                err = <strong>Password is required!!!.</strong>;
         }
         else{
             const user={
@@ -71,7 +71,7 @@ const Signin = () => {
             <div>
                 <form className="signin" onSubmit={handleSubmit}>
 
-                <label>Name:
+                <label>Username:
                 <input type="text" name="username" value={username} onChange={(e)=>setUsername(e.target.value)}/>
                 </label>
 
@@ -79,7 +79,7 @@ const Signin = () => {
                 <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 </label>
 
-                <input className="signinbutton" type="submit" value="SignIn" />
+                <input className="signinbutton" type="submit" value="LOG IN" />
                 {errormessage}
                 </form>
             </div>
