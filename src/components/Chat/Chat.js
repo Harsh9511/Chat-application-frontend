@@ -257,6 +257,7 @@ const Chat = ({socket}) => {
                     </form>
                     {/* <i className="fas fa-microphone"></i> */}
                 </div>
+                
 
             </div>
         )

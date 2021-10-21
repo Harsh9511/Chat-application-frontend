@@ -11,9 +11,9 @@ input{
     text-align: center;
 }
 
-.credentialsWarning1, .credentialsWarning2{
+.credentialsWarning{
     font-weight: bold;
-    /* color: red; */
+    color: red;
 }
 
 .signinbutton{

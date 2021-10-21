@@ -29,19 +29,19 @@ class signup extends Component{
         event.preventDefault();
         let err = "";
         if(!this.state.username){
-                err = <strong>Please provide the user name.</strong>;
+                err = <strong>Username is required!</strong>;
         }   
         else if(!this.state.email){
-                err = <strong>Please provide the email.</strong>;
+                err = <strong>Email is required!</strong>;
         }
         else if(!this.state.password){
-                err = <strong>Please provide the password.</strong>;
+                err = <strong>Password is required!</strong>;
         }
         else if(!this.state.Repassword){
-            err = <strong>Please provide the Repassword.</strong>;
+            err = <strong>Please fill all the fields!</strong>;
         }
         else if(this.state.password !== this.state.Repassword){
-            err = <strong>Please enter the same password in Repassword.</strong>;
+            err = <strong>Password mismatch!!!</strong>;
         }
         else{
             const user = {
@@ -74,23 +74,23 @@ class signup extends Component{
             return(
                 <form className="signup" onSubmit={this.handleSubmit}>
 
-                <label>Name:
+                <label>Your username:
                 <input type="text" name="username" onChange={this.handleChange}/>
                 </label>
 
-                <label>MailId:
+                <label>Your Email:
                 <input type="email" name="email" onChange={this.handleChange}/>
                 </label>
 
-                <label>Generate Password:
+                <label>Generate a Password:
                 <input type="password" name="password" onChange={this.handleChange}/>
                 </label>
 
-                <label>ReEnter Password:
+                <label>Re-Enter the Password:
                 <input type="password" name="Repassword" onChange={this.handleChange}/>
                 </label>
 
-                <input className="signupbutton" type="submit" value="SignUp" />
+                <input className="signupbutton" type="submit" value="REGISTER" />
                 {this.state.errormessage}
                 </form>
             );

@@ -3,6 +3,7 @@ label{
 }
 
 .signupbutton{
+    font-weight: bold;
     margin-top: 2rem;
     margin-right: 1rem;
     padding: 1rem;
