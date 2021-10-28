@@ -94,7 +94,6 @@
     to right top,
     rgba(255,255,255,0.7),
     rgba(255,255,255,0.4));
-    /* background-color: brown; */
     border: none;
     outline: none;
 }
@@ -130,44 +129,32 @@
 
 .chatDropDown{
     position: absolute;
-  top: 6.5%;
-  left: 90%;
-  width: 10.5%;
-  transform: translateX(-45%);
-  background: linear-gradient(
-      to right top,
-      #c6e1e8, #c8c8ed
-  );
-  border: var(--border);
-  border-radius: 15px;
-  padding: 1rem;
-  overflow: hidden;
-  transition: height var(--speed) ease;
-  opacity: 1;
-  z-index: 2;
-  box-shadow: 30px, 50px, red;
+    top: 8%;
+    left: 90%;
+    width: 15%;
+    transform: translateX(-45%);
+    background: linear-gradient(
+    to right bottom ,
+    rgb(255, 255, 255,0.7),
+    rgb(253, 253, 255,0.4));
+    border-radius: 0.6rem;
+    overflow: hidden;
+    transition: height var(--speed) ease;
+    font-weight: 500;
+    opacity: 0.6;
+    z-index: 2;
+    box-shadow: 0.1rem 0.1rem 0.5rem black;
 }
 
-.menu-item {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-radius: var(--border-radius);
-    transition: background var(--speed);
-    padding: 0.5rem;
-  }
+.chatDropDown div{
+    padding: 1rem;
+    cursor: pointer;
+}
 
-  .menu-item:hover {
-    background: linear-gradient(to right top,#9133e9,#6cebba);
-    border-radius: 15px;
-  }
-
-/* .chatSetting{
-    /* position: relative; */
-    /* transform: translateX(20rem,40rem); */
-    /* left: -20rem; */
-    /* right: 20%; */
-    /* height: 5rem;
-    width: 5rem;
-    background-color: brown;
-} */ 
+.chatDropDown div:hover {
+background: linear-gradient(
+to right bottom ,
+rgb(255, 255, 255),
+rgb(253, 253, 255));
+}
+ 

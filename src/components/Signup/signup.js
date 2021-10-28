@@ -74,24 +74,16 @@ class signup extends Component{
             return(
                 <form className="signup" onSubmit={this.handleSubmit}>
 
-                <label>Your username:
-                <input type="text" name="username" onChange={this.handleChange}/>
-                </label>
+                <input className="input" type="text" name="username" placeholder="User Name" onChange={this.handleChange}/>
 
-                <label>Your Email:
-                <input type="email" name="email" onChange={this.handleChange}/>
-                </label>
+                <input className="input" type="email" name="email" placeholder="Email" onChange={this.handleChange}/>
 
-                <label>Generate a Password:
-                <input type="password" name="password" onChange={this.handleChange}/>
-                </label>
+                <input className="input" type="password" name="password" placeholder="Generate Password" onChange={this.handleChange}/>
 
-                <label>Re-Enter the Password:
-                <input type="password" name="Repassword" onChange={this.handleChange}/>
-                </label>
+                <input className="input" type="password" name="Repassword" placeholder="Re-Enter Password" onChange={this.handleChange}/>
 
-                <input className="signupbutton" type="submit" value="REGISTER" />
-                {this.state.errormessage}
+                <input className="button" type="submit" value="REGISTER" />
+                <span className="credentialsWarning">{this.state.errormessage}</span>
                 </form>
             );
         }else{

@@ -3,9 +3,11 @@ import Avatar from '../Avatar/Avatar'
 import Contacts from '../Contacts/Contacts';
 import {useContext, useState, useEffect} from 'react';
 import {Context} from '../context';
+import axios from 'axios';
 
 
-const Dashboard = ({socket}) =>{
+
+const Dashboard = ({socket,parentCallback,InterfaceCallBack}) =>{
     // eslint-disable-next-line
     const [globalState, setGlobalState] = useContext(Context);
     const [SearchedContacts,setSearchedContacts]= useState([]);
@@ -14,7 +16,7 @@ const Dashboard = ({socket}) =>{
 
     useEffect(() => {
         setSavedContacts(globalState.user.rooms.map((val,key)=>{
-            return(<Contacts key={key} socket={socket} contactInfo={val}/>);
+            return(<Contacts key={key} socket={socket} contactInfo={val} InterfaceCallBack={InterfaceCallBack} />);
         }));
     }, [globalState])
 
@@ -91,10 +93,9 @@ const Dashboard = ({socket}) =>{
     const handleChange = async (event) =>{
         if(event.target.value==="" || event.target.value === undefined ){
             setSavedContacts(globalState.user.rooms.map((val,key)=>{
-                return(<Contacts key={key} socket={socket} contactInfo={val}/>);
+                return(<Contacts key={key} socket={socket} contactInfo={val} InterfaceCallBack={InterfaceCallBack}/>);
             }));
             setSearchedContacts([]);
-            // console.log("  Nothing   ");
         }else{
             const searchList = [...globalState.user.rooms,...globalState.otherUsers]
             setSearchedContacts(
@@ -111,10 +112,32 @@ const Dashboard = ({socket}) =>{
                             unseenMessages:0,
                             lastMessage:{body:"",from:"",time:""},
                         }
-                    return(<Contacts key={key} contactInfo={obj}/>);
+                    return(<Contacts key={key} contactInfo={obj} InterfaceCallBack={InterfaceCallBack}/>);
                     }),
             );
         }
+    }
+
+    const handleClickCreateGroup = async ()=>{
+        socket.emit("all_users",globalState.user.name, async (res)=>{
+            InterfaceCallBack(true,res.otherUsers);
+        });
+        setOpenDashboardSettings(!openDashboardSettings);
+    }
+
+    const handleClickSettings = async ()=>{
+        
+    }
+
+    const handleClickLogOut = async ()=>{
+        axios.get('user/logout').then((res) => {
+            console.log(res.data.message,res.data.status);
+            socket.disconnect();
+            parentCallback({isSignin:false,socket:socket});
+        }).catch(error => {
+            console.log(error.message);
+        });
+        setOpenDashboardSettings(!openDashboardSettings);
     }
     
     return(
@@ -126,11 +149,9 @@ const Dashboard = ({socket}) =>{
             </div>
             {openDashboardSettings?
             <div className="dashboardDropDown">
-                <ul>
-                    <li className="menu-item">Create new SnakePit</li>
-                    <li className="menu-item">Settings</li>
-                    <li className="menu-item" onClick={() => {'http://localhost:3000/signin'}}>Log out</li>
-                </ul>
+                    <div onClick={handleClickCreateGroup}>Create New Snake Pit</div>
+                    {/* <div onClick={handleClickSettings}>Settings</div> */}
+                    <div onClick={handleClickLogOut}>Log Out</div>
             </div>
             :null}
             <div className="search-bar">

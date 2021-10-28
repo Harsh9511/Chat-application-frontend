@@ -1,5 +1,4 @@
 .dashboard{
-    /* flex: 2; */
     display: flex;
     flex-direction: column;
     width: 35%;
@@ -47,8 +46,8 @@
     background: linear-gradient(
     to right bottom ,
     rgba(255,255,255,0.9),
-    rgba(255,255,255,0.7));
-    border-radius: 1rem;
+    rgba(255,255,255,0.7)); 
+    border-radius: 0.6rem;
     min-height: 100%;
     min-width: 98%;
 
@@ -65,7 +64,9 @@
     outline: none;
     width: 96%;
     align-items:flex-start;
-    border-radius: 1rem;
+    border-radius: 0.6rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 0.6rem;
 }
 
 .contactsArea{
@@ -80,39 +81,31 @@
 
 .dashboardDropDown{
     position: absolute;
-  top: 6.5%;
-  left: 23.3%;
-  width: 13.5%;
-  transform: translateX(-45%);
-  background: linear-gradient(
-      to right top,
-      #c6e1e8, #c8c8ed
-  );
-  border: var(--border);
-  border-radius: 15px;
-  padding: 1rem;
-  overflow: hidden;
-  transition: height var(--speed) ease;
-  opacity: 1;
-  z-index: 2;
-  box-shadow: 30px, 50px, black;
+    top: 10%;
+    left: 23%;
+    transform: translateX(-45%);
+    background: linear-gradient(
+    to right bottom ,
+    rgba(255, 255, 255, 0.5),
+    rgba(255,255,255,0.3));
+    border-radius: 0.6rem;
+    overflow: hidden;
+    transition: height var(--speed) ease;
+    font-weight: 500;
+    opacity: 0.6;
+    z-index: 2;
+    box-shadow: 0.1rem 0.1rem 0.5rem black;
 }
 
-.dashboardDropDown:hover{
+.dashboardDropDown div{
+    padding: 1rem;
     cursor: pointer;
 }
 
-.menu-item {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-radius: var(--border-radius);
-    transition: background var(--speed);
-    padding: 0.5rem;
-  }
-
-  .menu-item:hover {
-  
-    border-radius: 15px;
-  }
+.dashboardDropDown div:hover {
+background: linear-gradient(
+to right bottom ,
+rgb(255, 255, 255),
+rgb(253, 253, 255));
+}
   

@@ -3,7 +3,6 @@ import Avatar from '../Avatar/Avatar';
 import './Chat.css';
 import Messages from '../Messages/Messages.js'
 import {Context} from '../context';
-import axios from 'axios';
 import Picker,{SKIN_TONE_DARK} from 'emoji-picker-react';
 
 
@@ -183,10 +182,59 @@ const Chat = ({socket}) => {
         setMessageText("");
     }
 
-    const handleChatSettings = ()=>{
-        // return(
-        //     <div className="chatSetting"></div>
-        // )
+    const handleClearMessage = ()=>{
+        const data = {
+            roomId:globalState.chatId,
+            userId:globalState.user.id,
+        };
+        socket.emit("clear_messages",data,async(res)=>{
+            console.log(res);
+            if(res.message !== undefined){
+                const index = globalState.user.rooms.findIndex(element => element._id === data.roomId);
+                let user = globalState.user;
+                user.rooms[index].seen = true;
+                user.rooms[index].unseenMessages = 0;
+                user.rooms[index].lastMessage = "";
+                setGlobalState({user:user,
+                otherUsers:globalState.otherUsers,
+                chatName:globalState.chatName,
+                chatId:globalState.chatId,
+                chatMessages:[],
+                });  
+            }
+        })
+    }
+
+    const handleDeleteChat = ()=>{
+        const data = {
+            roomId:globalState.chatId,
+            chatName:globalState.chatName,
+            userId:globalState.user.id,
+        };
+
+        socket.emit("delete_room",data,async(res)=>{
+            console.log(res);
+            if(res.message !== undefined){
+                let user = globalState.user;
+                for(let i=0;i<user.rooms.length;i++){
+                    if(user.rooms[i]._id === globalState.chatId)
+                    {
+                        user.rooms.splice(i, 1);
+                        break;
+                    }
+                }
+                let otherUsers = globalState.otherUsers;
+                if(res.obj.name !== undefined){
+                    otherUsers.push(res.obj);
+                }
+                setGlobalState({user:user,
+                    otherUsers:otherUsers,
+                    chatName:" ",
+                    chatId:"",
+                    chatMessages:[],
+                });  
+            }
+        })
     }
 
     if(globalState.chatName!==" " ){
@@ -204,13 +252,10 @@ const Chat = ({socket}) => {
                         <i class="fas fa-paperclip"></i>
                         <i class="fas fa-ellipsis-v" onClick={() => {setOpenChatSettings(!openChatSettings)}}></i>
                     </div>
-                    {/* <div className="chatSetting"></div> */}
                     {openChatSettings?
                     <div className="chatDropDown">
-                        <ul>
-                            <li className="menu-item">Clear Messages</li>
-                            <li className="menu-item">Delete Chat</li>
-                        </ul>
+                        <div onClick={handleClearMessage}>Clear Messages</div>
+                        <div onClick={handleDeleteChat}>Delete Chat</div>
                     </div>
                     :null}
                 </div>
@@ -255,7 +300,6 @@ const Chat = ({socket}) => {
                     {displaySendBtn?<button className="display"><i className="fas fa-caret-right"></i></button>
                     :<button className="hide"><i className="fas fa-caret-right"></i></button>}
                     </form>
-                    {/* <i className="fas fa-microphone"></i> */}
                 </div>
                 
 
