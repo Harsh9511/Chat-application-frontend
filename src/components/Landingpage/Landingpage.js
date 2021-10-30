@@ -27,12 +27,20 @@ const Landingpage = ()=>{
               <span></span>
               <span></span>
               {/* <img src="./Snake-app-Icon.png" alt="Avatar"></img> */}
-              <img src="./SnakeLogo.gif" alt="gif"></img>
+              <img src="./GIF/SnakeLogo.gif" alt="gif"></img>
               <span></span>
               <span></span>
           </div>
           <div className="para">
             <p>SNAKE BITE</p>
+          </div>
+          <div className="CreatorInfo">
+            <p>
+              {"Contributors: "}
+              <a href="https://www.linkedin.com/in/jitin-kansal-08345b18b/" target="_blank"><i class="fab fa-linkedin"></i>JITIN KANSAL</a>
+              {" & "}
+              <a href="https://www.linkedin.com/in/harsh-vardhan-819314110/" target="_blank"><i class="fab fa-linkedin"></i>HARSH VARDHAN</a>
+            </p>
           </div>
         </div>
         
